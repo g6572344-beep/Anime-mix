@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Anime Mix — منصة الأنمي العربية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#07090f;--bg2:#0d1117;--s:#141c2e;--s2:#1a2540;--b:rgba(99,102,241,.15);--b2:rgba(99,102,241,.3);--p:#6366f1;--pg:rgba(99,102,241,.3);--ac:#f472b6;--go:#fbbf24;--t:#f1f5f9;--t2:#94a3b8;--t3:#64748b;--r:12px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:'Cairo',sans-serif;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--p);border-radius:3px}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+.wrap{max-width:1380px;margin:0 auto;padding:0 1.2rem}
+/* Header */
+header{position:sticky;top:0;z-index:90;background:rgba(7,9,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
+.hdr{height:60px;display:flex;align-items:center;gap:.9rem}
+.logo{display:flex;align-items:center;gap:.5rem;cursor:pointer;flex-shrink:0}
+.logo-icon{width:35px;height:35px;background:linear-gradient(135deg,var(--p),var(--ac));border-radius:9px;display:grid;place-items:center;font-size:1rem;box-shadow:0 0 14px var(--pg)}
+.logo-txt{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.15rem;background:linear-gradient(135deg,var(--p),var(--ac));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hdr-nav{display:flex;align-items:center;gap:1.4rem;margin-right:1.2rem}
+.hdr-nav a{font-size:.83rem;font-weight:600;color:var(--t2);transition:color .2s;cursor:pointer}
+.hdr-nav a:hover{color:var(--t)}
+.hdr-r{display:flex;align-items:center;gap:.55rem;margin-right:auto;flex-wrap:wrap}
+.srch{display:flex;align-items:center;gap:.38rem;background:var(--s);border:1px solid var(--b);border-radius:999px;padding:.3rem .8rem;min-width:180px}
+.srch input{background:none;border:none;outline:none;color:var(--t);font-family:'Cairo',sans-serif;font-size:.8rem;width:100%}
+.srch input::placeholder{color:var(--t3)}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .88rem;border-radius:999px;font-weight:700;font-size:.8rem;transition:all .2s;border:none;white-space:nowrap;cursor:pointer}
+.bp{background:linear-gradient(135deg,var(--p),#818cf8);color:#fff;box-shadow:0 4px 12px var(--pg)}
+.bp:hover{transform:translateY(-1px)}
+.bo{background:transparent;border:1px solid var(--b);color:var(--t2)}
+.bo:hover{border-color:var(--p);color:var(--t)}
+.bac{background:transparent;border:1px solid rgba(244,114,182,.4);color:var(--ac)}
+.bdanger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.28);color:#f87171}
+#userMenu{display:none;align-items:center;gap:.45rem}
+/* Adv search */
+.advsrch{background:var(--bg2);border-bottom:1px solid var(--b);padding:.65rem 0;display:none}
+.advsrch.open{display:block}
+.advsrch-inner{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.fsel{background:var(--s);border:1px solid var(--b);border-radius:8px;color:var(--t2);font-family:'Cairo',sans-serif;font-size:.8rem;padding:.32rem .6rem;outline:none;cursor:pointer}
+.fsel:focus{border-color:var(--p)}
+/* Pages */
+.page{display:none}.page.active{display:block}
+/* Hero */
+.hero{position:relative;height:520px;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(99,102,241,.15) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 10% 20%,rgba(244,114,182,.09) 0%,transparent 50%),#07090f}
+.hgrid{position:absolute;right:0;top:0;bottom:0;width:52%;overflow:hidden;opacity:.3}
+.hgrid-i{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:100%;transform:skewX(-4deg) translateX(18px)}
+.hgc{display:flex;flex-direction:column;gap:4px}
+.hgc:nth-child(2){margin-top:-40px}.hgc:nth-child(3){margin-top:20px}.hgc:nth-child(4){margin-top:-20px}
+.hgi{flex:1;border-radius:5px;min-height:100px}
+.g1{background:linear-gradient(160deg,#1e1b4b,#312e81)}.g2{background:linear-gradient(160deg,#1e3a5f,#1d4ed8)}.g3{background:linear-gradient(160deg,#4a1942,#7c3aed)}.g4{background:linear-gradient(160deg,#14532d,#15803d)}.g5{background:linear-gradient(160deg,#7f1d1d,#b91c1c)}.g6{background:linear-gradient(160deg,#78350f,#d97706)}.g7{background:linear-gradient(160deg,#134e4a,#0d9488)}.g8{background:linear-gradient(160deg,#1e3a5f,#0ea5e9)}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to left,transparent 36%,#07090f 70%)}
+.hero-cnt{position:relative;z-index:1;max-width:540px}
+.hbadge{display:inline-flex;align-items:center;gap:.32rem;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.26);color:#a5b4fc;border-radius:999px;padding:.26rem .68rem;font-size:.76rem;font-weight:700;margin-bottom:1.1rem}
+.hero-h1{font-family:'Tajawal',sans-serif;font-weight:900;font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.22;margin-bottom:.85rem}
+.hero-h1 span{background:linear-gradient(135deg,var(--p),var(--ac));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--t2);font-size:.96rem;margin-bottom:1.6rem;line-height:1.75}
+.hero-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+/* Stats */
+.stats{background:var(--s);border-top:1px solid var(--b);border-bottom:1px solid var(--b)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:1rem;text-align:center;border-left:1px solid var(--b)}
+.stat:last-child{border-left:none}
+.stat-n{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.55rem;color:var(--p)}
+.stat-l{font-size:.76rem;color:var(--t2)}
+/* Section */
+section{padding:2.2rem 0}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.35rem}
+.sh-l{display:flex;align-items:center;gap:.6rem}
+.sico{width:32px;height:32px;background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.22);border-radius:8px;display:grid;place-items:center;font-size:.88rem}
+.stit{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.35rem}
+/* Genre pills */
+.gpills{display:flex;gap:.45rem;overflow-x:auto;padding-bottom:.35rem;scrollbar-width:none}
+.gpills::-webkit-scrollbar{display:none}
+.gpill{white-space:nowrap;padding:.32rem .85rem;border-radius:999px;font-size:.8rem;font-weight:700;cursor:pointer;border:1px solid var(--b);background:var(--s);color:var(--t2);transition:all .2s}
+.gpill:hover,.gpill.on{background:var(--p);color:#fff;border-color:var(--p);box-shadow:0 3px 10px var(--pg)}
+/* Anime grid */
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1rem}
+.ac{background:var(--s);border:1px solid var(--b);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .26s;content-visibility:auto;contain-intrinsic-size:0 280px}
+.ac:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.42);box-shadow:0 10px 28px rgba(0,0,0,.38)}
+.ap{aspect-ratio:2/3;position:relative;overflow:hidden}
+.aph{width:100%;height:100%;display:grid;place-items:center;font-size:2.7rem;overflow:hidden;position:relative;contain:layout style}.aph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.aov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 55%);opacity:0;transition:opacity .26s;display:flex;flex-direction:column;justify-content:flex-end;padding:.65rem;gap:.32rem}
+.ac:hover .aov{opacity:1}
+.ovb{width:100%;padding:.3rem;border-radius:7px;border:none;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:700;font-size:.76rem;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:.22rem}
+.ovbp{background:var(--p);color:#fff}
+.ovbo{background:rgba(255,255,255,.1);backdrop-filter:blur(5px);color:#fff;border:1px solid rgba(255,255,255,.16)}
+.arate{position:absolute;top:.42rem;right:.42rem;background:rgba(0,0,0,.72);backdrop-filter:blur(5px);border-radius:999px;padding:.16rem .44rem;font-size:.7rem;font-weight:700;color:var(--go)}
+.anew{position:absolute;top:.42rem;left:.42rem;background:linear-gradient(135deg,var(--ac),#e879f9);border-radius:999px;padding:.16rem .44rem;font-size:.66rem;font-weight:700;color:#fff}
+.ai{padding:.75rem}
+.aname{font-weight:700;font-size:.86rem;line-height:1.3;margin-bottom:.42rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.atags{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.42rem}
+.tag{background:var(--s2);border:1px solid var(--b);border-radius:4px;padding:.1rem .38rem;font-size:.66rem;color:var(--t2)}
+.ameta{display:flex;justify-content:space-between;font-size:.7rem;color:var(--t3)}
+/* Empty */
+.empty{text-align:center;padding:3.5rem 2rem}
+.eico{font-size:3.2rem;margin-bottom:.75rem;opacity:.32}
+.etit{font-size:1.1rem;font-weight:700;margin-bottom:.35rem}
+.esub{color:var(--t2);font-size:.86rem}
+/* Page header */
+.pgh{padding:1.75rem 0 .35rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem}
+.pgt{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.75rem}
+.pgs{color:var(--t2);font-size:.88rem;margin-top:.18rem}
+/* Detail */
+.dhero{position:relative;height:300px;overflow:hidden;display:flex;align-items:flex-end}
+.dhero-bg{position:absolute;inset:0;display:grid;place-items:center;font-size:8rem;opacity:.16;overflow:hidden}.dhero-bg img{width:100%;height:100%;object-fit:cover;opacity:1}
+.dhero-ov{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 28%,transparent 100%)}
+.dhero-cnt{position:relative;z-index:1;padding-bottom:1.5rem}
+.dgrid{display:grid;grid-template-columns:210px 1fr;gap:2.2rem;padding-top:1.35rem}
+.dposter{width:210px;flex-shrink:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--b);aspect-ratio:2/3;display:grid;place-items:center;font-size:4.5rem;position:relative}.dposter img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dtit{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.9rem;line-height:1.25;margin-bottom:.3rem}
+.djap{color:var(--t2);font-size:.92rem;margin-bottom:.7rem}
+.dmeta{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.95rem}
+.mb{background:var(--s2);border:1px solid var(--b);border-radius:6px;padding:.22rem .55rem;font-size:.78rem}
+.mb.gold{color:var(--go);border-color:rgba(251,191,36,.28);background:rgba(251,191,36,.07)}
+.mb.grn{color:#4ade80;border-color:rgba(74,222,128,.28);background:rgba(74,222,128,.07)}
+.mb.blu{color:#60a5fa;border-color:rgba(96,165,250,.28);background:rgba(96,165,250,.07)}
+.dstory{color:var(--t2);font-size:.9rem;line-height:1.8;margin-bottom:1.1rem}
+.epgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:.58rem}
+.epcard{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:.58rem .45rem;text-align:center;cursor:pointer;transition:all .2s}
+.epcard:hover,.epcard.playing{background:rgba(99,102,241,.14);border-color:rgba(99,102,241,.38)}
+.epcard.playing{box-shadow:0 0 0 2px var(--p)}
+.epnum{font-size:.68rem;color:var(--t3);margin-bottom:.18rem}
+.eptit{font-size:.76rem;font-weight:700;line-height:1.2}
+.epdur{font-size:.65rem;color:var(--t3)}
+/* Player */
+.pm{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.96);backdrop-filter:blur(14px);display:none;flex-direction:column}
+.pm.open{display:flex}
+.pmhdr{display:flex;align-items:center;gap:.65rem;padding:.8rem 1.2rem;border-bottom:1px solid var(--b);background:var(--bg2);flex-shrink:0;flex-wrap:wrap}
+.pmtit{flex:1;font-size:.95rem;font-weight:700;min-width:0}
+.pmbody{flex:1;display:grid;grid-template-columns:1fr 262px;overflow:hidden;min-height:0}
+.pmmain{display:flex;flex-direction:column;background:#000}
+.pmscreen{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pmph{text-align:center}
+.bigico{font-size:5.5rem;opacity:.45;margin-bottom:.65rem}
+.playfab{width:68px;height:68px;background:rgba(99,102,241,.82);border-radius:50%;display:grid;place-items:center;font-size:1.7rem;cursor:pointer;transition:all .2s;box-shadow:0 0 24px var(--pg);margin:.65rem auto 0}
+.playfab:hover{transform:scale(1.08);background:var(--p)}
+.pmctrl{padding:.78rem 1.2rem;background:var(--bg2);border-top:1px solid var(--b);flex-shrink:0}
+.prog{height:4px;background:var(--s2);border-radius:2px;margin-bottom:.65rem;cursor:pointer;position:relative}
+.progf{height:100%;background:var(--p);border-radius:2px;position:relative;transition:width .3s linear}
+.progf::after{content:'';position:absolute;left:0;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;background:#fff;border-radius:50%;box-shadow:0 0 5px var(--p)}
+.crow{display:flex;align-items:center;gap:.65rem}
+.cb{background:none;border:none;color:var(--t2);cursor:pointer;font-size:.95rem;padding:.25rem;transition:color .15s;border-radius:5px;line-height:1}
+.cb:hover{color:var(--t);background:var(--s)}
+.tdis{font-size:.76rem;color:var(--t2);margin-right:auto}
+.srcrow{display:flex;gap:.36rem;flex-wrap:wrap}
+.sbtn{padding:.22rem .6rem;border-radius:6px;background:var(--s2);border:1px solid var(--b);color:var(--t2);font-family:'Cairo',sans-serif;font-size:.74rem;cursor:pointer;transition:all .15s}
+.sbtn.on{background:var(--p);border-color:var(--p);color:#fff}
+.pmsb{background:var(--bg2);border-right:1px solid var(--b);overflow-y:auto;padding:.8rem}
+.sbtit{font-weight:700;font-size:.82rem;color:var(--t2);margin-bottom:.8rem}
+.epit{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:7px;cursor:pointer;transition:background .15s;margin-bottom:.22rem}
+.epit:hover{background:var(--s)}
+.epit.on{background:rgba(99,102,241,.13);border:1px solid rgba(99,102,241,.26)}
+.epnum-b{width:28px;height:28px;border-radius:6px;background:var(--s2);display:grid;place-items:center;font-size:.72rem;font-weight:700;color:var(--t2);flex-shrink:0}
+.epit.on .epnum-b{background:var(--p);color:#fff}
+.epitinfo{}
+.epittit{font-size:.8rem;font-weight:600}
+.epitdur{font-size:.68rem;color:var(--t3)}
+/* Modal */
+.mov{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.88);backdrop-filter:blur(16px);display:none;place-items:center}
+.mov.open{display:grid}
+.mbox{background:var(--bg2);border:1px solid var(--b);border-radius:20px;padding:2.1rem;max-width:400px;width:92%;box-shadow:0 22px 56px rgba(0,0,0,.6);animation:bxIn .26s ease;position:relative;max-height:92vh;overflow-y:auto}
+@keyframes bxIn{from{opacity:0;transform:scale(.93) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.mcls{position:absolute;top:.8rem;left:.8rem;background:var(--s);border:1px solid var(--b);color:var(--t);border-radius:6px;padding:.25rem .5rem;cursor:pointer;font-size:.85rem;line-height:1}
+.mlogo{text-align:center;margin-bottom:1.35rem}
+.mlogo-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--p),var(--ac));border-radius:13px;margin:0 auto .6rem;display:grid;place-items:center;font-size:1.35rem;box-shadow:0 0 20px var(--pg)}
+.mtit{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.3rem}
+.msub{color:var(--t2);font-size:.8rem;margin-top:.18rem}
+.fg{margin-bottom:.65rem}
+.fl{display:block;font-size:.78rem;color:var(--t2);margin-bottom:.25rem}
+.fi{width:100%;padding:.56rem .9rem;background:var(--s);border:1px solid var(--b);border-radius:8px;color:var(--t);font-family:'Cairo',sans-serif;font-size:.86rem;outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--p)}
+.fi::placeholder{color:var(--t3)}
+textarea.fi{resize:vertical;min-height:76px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.fsel2{width:100%;padding:.56rem .9rem;background:var(--s);border:1px solid var(--b);border-radius:8px;color:var(--t);font-family:'Cairo',sans-serif;font-size:.86rem;outline:none;cursor:pointer}
+.fsel2:focus{border-color:var(--p)}
+.fbtn{width:100%;padding:.64rem;background:linear-gradient(135deg,var(--p),#818cf8);border:none;border-radius:9px;color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;cursor:pointer;box-shadow:0 4px 12px var(--pg);transition:all .2s;margin-top:.22rem}
+.fbtn:hover{transform:translateY(-1px)}
+/* Admin */
+.astats{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.78rem;margin:1.35rem 0}
+.astat{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:1rem;text-align:center}
+.astat-n{font-family:'Tajawal',sans-serif;font-weight:900;font-size:1.55rem}
+.astat-l{font-size:.74rem;color:var(--t2);margin-top:.12rem}
+.arow{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:.85rem 1rem;display:flex;align-items:center;gap:.82rem;flex-wrap:wrap;margin-bottom:.58rem;transition:border-color .2s}
+.arow:hover{border-color:var(--b2)}
+.arow-ico{width:44px;height:44px;border-radius:9px;display:grid;place-items:center;font-size:1.6rem;flex-shrink:0;overflow:hidden;position:relative}.arow-ico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.arow-info{flex:1;min-width:140px}
+.arow-name{font-weight:700;font-size:.9rem}
+.arow-meta{font-size:.74rem;color:var(--t2);margin-top:.1rem}
+.arow-tags{font-size:.7rem;color:var(--t3);margin-top:.08rem}
+.arow-acts{display:flex;gap:.36rem;flex-shrink:0;flex-wrap:wrap;align-items:center}
+.abadge{border-radius:5px;padding:.16rem .5rem;font-size:.73rem}
+.abp{background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.22);color:#a5b4fc}
+.abg{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.22);color:var(--go)}
+.abk{background:rgba(244,114,182,.09);border:1px solid rgba(244,114,182,.22);color:var(--ac)}
+.abgr{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.22);color:#4ade80}
+/* Toast */
+.tc{position:fixed;top:.9rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;flex-direction:column;gap:.35rem;pointer-events:none}
+.toast{background:var(--s2);border:1px solid var(--b);border-radius:9px;padding:.6rem 1.1rem;font-size:.86rem;font-weight:600;box-shadow:0 8px 22px rgba(0,0,0,.4);animation:tIn .26s ease;display:flex;align-items:center;gap:.4rem;pointer-events:auto}
+.toast.s{border-color:rgba(74,222,128,.32)}
+.toast.e{border-color:rgba(239,68,68,.32)}
+@keyframes tIn{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
+/* Footer */
+footer{background:var(--s);border-top:1px solid var(--b);padding:2.2rem 0 1.1rem;margin-top:1.75rem}
+.fgridf{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.fbrand p{color:var(--t2);font-size:.85rem;margin-top:.6rem;line-height:1.7;max-width:260px}
+.fcol h4{font-weight:700;margin-bottom:.8rem;font-size:.9rem}
+.fcol a{display:block;color:var(--t2);font-size:.83rem;margin-bottom:.38rem;transition:color .2s;cursor:pointer}
+.fcol a:hover{color:var(--p)}
+.fbot{border-top:1px solid var(--b);padding-top:1rem;display:flex;align-items:center;justify-content:space-between;font-size:.76rem;color:var(--t3)}
+/* Responsive */
+
+/* ── Skip Intro ── */
+.skip-intro{position:absolute;bottom:5rem;left:1.2rem;z-index:10;background:rgba(99,102,241,.92);color:#fff;border:none;border-radius:8px;padding:.5rem 1.1rem;font-family:Cairo,sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;backdrop-filter:blur(6px);display:none;animation:fadeIn .3s ease;box-shadow:0 4px 14px rgba(99,102,241,.4)}
+.skip-intro.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+/* ── Resume Banner ── */
+.resume-banner{background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.3);border-radius:10px;padding:.7rem 1rem;margin-bottom:.85rem;display:none;align-items:center;gap:.75rem;flex-wrap:wrap}
+.resume-banner.show{display:flex}
+.resume-info{flex:1;font-size:.88rem}
+.resume-info strong{color:var(--p)}
+/* ── Rating Stars ── */
+.stars{display:flex;gap:.2rem;direction:ltr}
+.star{font-size:1.3rem;cursor:pointer;color:var(--t3);transition:color .15s;line-height:1}
+.star.on,.star:hover,.star:hover~.star{color:var(--go)}
+.stars:hover .star{color:var(--go)}
+.stars .star:hover~.star{color:var(--t3)}
+.review-card{background:var(--s);border:1px solid var(--b);border-radius:10px;padding:.85rem 1rem;margin-bottom:.6rem}
+.review-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem}
+.review-user{font-weight:700;font-size:.85rem}
+.review-date{font-size:.72rem;color:var(--t3)}
+.review-stars{font-size:.85rem;color:var(--go);margin-bottom:.3rem}
+.review-txt{font-size:.85rem;color:var(--t2);line-height:1.6}
+/* ── Theme switcher ── */
+.theme-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--b);background:var(--s);cursor:pointer;transition:all .2s;flex-shrink:0}
+.theme-btn.active{border-color:var(--p);box-shadow:0 0 8px var(--pg)}
+/* ── Charts ── */
+.chart-wrap{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:1.2rem;margin-bottom:1rem}
+.chart-title{font-weight:700;font-size:.92rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.chart-canvas{position:relative;height:220px}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+@media(max-width:700px){.charts-grid{grid-template-columns:1fr}}
+/* ── Theme variables ── */
+body.th-action{--p:#ef4444;--pg:rgba(239,68,68,.3);--ac:#f97316}
+body.th-sport{--p:#3b82f6;--pg:rgba(59,130,246,.3);--ac:#06b6d4}
+body.th-romance{--p:#ec4899;--pg:rgba(236,72,153,.3);--ac:#a855f7}
+body.th-fantasy{--p:#8b5cf6;--pg:rgba(139,92,246,.3);--ac:#06b6d4}
+body.th-default{--p:#6366f1;--pg:rgba(99,102,241,.3);--ac:#f472b6}
+
+@media(max-width:860px){.hdr-nav{display:none}.pmbody{grid-template-columns:1fr}.pmsb{display:none}.dgrid{grid-template-columns:1fr}.dposter{width:150px;margin:0 auto}.fgridf{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-left:none}.hero{height:auto;min-height:380px;padding:2.5rem 0}.hgrid,.hero-ov{display:none}}
+@media(max-width:480px){.ag{grid-template-columns:repeat(2,1fr);gap:.62rem}.srch{min-width:120px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="tc" id="TC"></div>
+
+<!-- Auth Modal -->
+<div class="mov" id="authModal">
+  <div class="mbox">
+    <button class="mcls" onclick="closeModal('authModal')">✕</button>
+    <div class="mlogo"><div class="mlogo-icon">🎌</div><div class="mtit">تسجيل الدخول</div><div class="msub">ادخل بياناتك للمتابعة</div></div>
+    <div class="fg"><label class="fl">اسمك</label><input class="fi" id="aN" placeholder="اسمك الكريم..."/></div>
+    <div class="fg"><label class="fl">البريد الإلكتروني</label><input class="fi" type="email" id="aE" placeholder="example@mail.com"/></div>
+    <div class="fg"><label class="fl">كلمة المرور</label><input class="fi" type="password" id="aP" placeholder="••••••••"/></div>
+    <button class="fbtn" onclick="handleLogin()">دخول ✨</button>
+  </div>
+</div>
+
+<!-- Anime Form Modal -->
+<div class="mov" id="animeModal">
+  <div class="mbox" style="max-width:510px">
+    <button class="mcls" onclick="closeModal('animeModal')">✕</button>
+    <div class="mlogo"><div class="mlogo-icon">🎬</div><div class="mtit" id="amtit">إضافة أنمي</div></div>
+    <div class="fg"><label class="fl">الاسم بالعربي *</label><input class="fi" id="af_a" placeholder="مثال: هجوم العمالقة"/></div>
+    <div class="fg"><label class="fl">الاسم الياباني</label><input class="fi" id="af_j" placeholder="Shingeki no Kyojin"/></div>
+    <div class="fg"><label class="fl">القصة</label><textarea class="fi" id="af_s" placeholder="ملخص القصة..."></textarea></div>
+    <div class="fgrid">
+      <div class="fg"><label class="fl">سنة الإنتاج</label><input class="fi" type="number" id="af_y" placeholder="2024"/></div>
+      <div class="fg"><label class="fl">التقييم (0-100)</label><input class="fi" type="number" id="af_r" placeholder="85" min="0" max="100"/></div>
+    </div>
+    <div class="fgrid">
+      <div class="fg"><label class="fl">الحالة</label><select class="fsel2" id="af_st"><option value="مستمر">مستمر</option><option value="مكتمل">مكتمل</option><option value="متوقف">متوقف</option></select></div>
+      <div class="fg"><label class="fl">إصدار جديد؟</label><select class="fsel2" id="af_n"><option value="false">لا</option><option value="true">نعم</option></select></div>
+    </div>
+    <div class="fg"><label class="fl">التصنيفات (افصل بفاصلة)</label><input class="fi" id="af_g" placeholder="أكشن، مغامرة، فانتازيا"/></div>
+    <div class="fg"><label class="fl">إجمالي الحلقات</label><input class="fi" type="number" id="af_e" placeholder="12" min="1"/></div>
+    <div class="fg">
+      <label class="fl">صورة البوستر</label>
+      <div style="display:flex;gap:.45rem;align-items:center;margin-bottom:.4rem">
+        <input class="fi" id="af_img" placeholder="رابط الصورة من الإنترنت https://..." style="flex:1;margin-bottom:0" oninput="previewImg()"/>
+      </div>
+      <div style="display:flex;align-items:center;gap:.45rem;margin-bottom:.4rem">
+        <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.45rem;background:var(--s2);border:1px dashed rgba(99,102,241,.4);border-radius:8px;cursor:pointer;font-size:.8rem;color:var(--t2)">
+          📁 رفع صورة من جهازك
+          <input type="file" id="af_file" accept="image/*" style="display:none" onchange="loadLocalImg()"/>
+        </label>
+        <div id="imgPreview" style="width:52px;height:70px;border-radius:7px;background:var(--s2);border:1px solid var(--b);overflow:hidden;display:grid;place-items:center;font-size:1.4rem;flex-shrink:0">🎌</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:.6rem;margin-top:.35rem">
+      <button class="fbtn" onclick="saveAnime()" style="flex:1">💾 حفظ</button>
+      <button onclick="closeModal('animeModal')" style="flex:.4;padding:.64rem;background:var(--s);border:1px solid var(--b);border-radius:9px;color:var(--t);font-family:Cairo,sans-serif;font-weight:700;font-size:.86rem">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Episode Form Modal -->
+<div class="mov" id="epModal">
+  <div class="mbox" style="max-width:490px">
+    <button class="mcls" onclick="closeModal('epModal')">✕</button>
+    <div class="mlogo"><div class="mlogo-icon">📺</div><div class="mtit" id="emtit">إضافة حلقة</div></div>
+    <div class="fg"><label class="fl">الأنمي</label><input class="fi" id="ef_an" readonly style="opacity:.65"/></div>
+    <div class="fgrid">
+      <div class="fg"><label class="fl">رقم الحلقة</label><input class="fi" type="number" id="ef_num" placeholder="1" min="1"/></div>
+      <div class="fg"><label class="fl">المدة</label><input class="fi" id="ef_dur" placeholder="24:00"/></div>
+    </div>
+    <div class="fg"><label class="fl">عنوان الحلقة</label><input class="fi" id="ef_tit" placeholder="الحلقة الأولى — البداية"/></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
+      <label class="fl" style="margin:0">مصادر الفيديو</label>
+      <button onclick="addSrcField()" style="padding:.22rem .58rem;background:var(--s2);border:1px solid var(--b);border-radius:6px;color:var(--t2);font-family:Cairo,sans-serif;font-size:.74rem;cursor:pointer">+ مصدر</button>
+    </div>
+    <div id="ef_srcs"></div>
+    <div style="display:flex;gap:.6rem;margin-top:.8rem">
+      <button class="fbtn" onclick="saveEpisode()" style="flex:1">💾 حفظ الحلقة</button>
+      <button onclick="closeModal('epModal')" style="flex:.4;padding:.64rem;background:var(--s);border:1px solid var(--b);border-radius:9px;color:var(--t);font-family:Cairo,sans-serif;font-weight:700;font-size:.86rem">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Player Modal -->
+<div class="pm" id="pm">
+  <div class="pmhdr">
+    <button onclick="closePlayer()" style="padding:.25rem .65rem;background:var(--s);border:1px solid var(--b);color:var(--t);border-radius:6px;cursor:pointer;font-family:Cairo,sans-serif;font-size:.78rem;flex-shrink:0">← رجوع</button>
+    <div class="pmtit" id="pmtit">—</div>
+    <div class="srcrow" id="srcrow"></div>
+    <button onclick="toggleFS()" style="padding:.25rem .58rem;background:var(--s);border:1px solid var(--b);color:var(--t);border-radius:6px;cursor:pointer;font-size:.88rem;flex-shrink:0">⛶</button>
+  </div>
+  <div class="pmbody">
+    <div class="pmmain">
+      <div class="pmscreen" id="pmscreen">
+        <button class="skip-intro" id="skipIntroBtn" onclick="skipIntro()">تخطي الشارة ⏭</button>
+        <div class="pmph" id="pmph">
+          <div class="bigico" id="pmico">🎌</div>
+          <div id="pmtit2" style="font-size:1.05rem;font-weight:700"></div>
+          <div id="pmep" style="color:var(--t2);font-size:.86rem;margin-top:.18rem"></div>
+          <div class="playfab" onclick="togglePlay()">▶</div>
+        </div>
+      </div>
+      <div class="pmctrl">
+        <div class="prog" onclick="seekClick(event)"><div class="progf" id="pf" style="width:0%"></div></div>
+        <div class="crow">
+          <button class="cb" onclick="seek(-10)">⏪</button>
+          <button class="cb" id="pb" onclick="togglePlay()">▶</button>
+          <button class="cb" onclick="seek(10)">⏩</button>
+          <button class="cb" onclick="prevEp()">⏮</button>
+          <button class="cb" onclick="nextEp()">⏭</button>
+          <span class="tdis" id="td">00:00 / 24:00</span>
+        </div>
+      </div>
+    </div>
+    <div class="pmsb"><div class="sbtit">قائمة الحلقات</div><div id="epsl"></div></div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="wrap hdr">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">🎌</div><span class="logo-txt">anime mix</span>
+    </div>
+    <nav class="hdr-nav">
+      <a onclick="showPage('home')">الرئيسية</a>
+      <a onclick="showPage('home');scroll2('trending')">الأكثر مشاهدة</a>
+      <a onclick="showPage('home');scroll2('gnr')">التصنيفات</a>
+      <a onclick="showPage('home');scroll2('newrel')">الجديد</a>
+    </nav>
+    <div class="hdr-r">
+      <div class="srch">
+        <span style="font-size:.85rem">🔍</span>
+        <input type="text" placeholder="ابحث عن أنمي..." id="si" oninput="handleSearch()"/>
+      </div>
+      <button class="btn bo" style="padding:.34rem .6rem" onclick="toggleAdv()" title="فلاتر">⚙</button>
+      <div id="userMenu">
+        <button class="btn bo" onclick="showPage('watchlist')">♥ قائمتي</button>
+        <button class="btn bo" onclick="showPage('history')">🕐 السجل</button>
+        <button class="btn bac" id="adminNavBtn" onclick="showPage('admin')">⚙️ التحكم</button>
+        <button class="btn bo" onclick="logout()">خروج</button>
+        <span id="ul" style="font-size:.8rem;color:var(--t2)"></span>
+      </div>
+      <div style="display:flex;gap:.3rem;align-items:center" title="ثيم الألوان">
+        <button class="theme-btn active" id="th-default" onclick="setTheme('default','#6366f1')" style="background:#6366f1"></button>
+        <button class="theme-btn" id="th-action" onclick="setTheme('action','#ef4444')" style="background:#ef4444"></button>
+        <button class="theme-btn" id="th-sport" onclick="setTheme('sport','#3b82f6')" style="background:#3b82f6"></button>
+        <button class="theme-btn" id="th-romance" onclick="setTheme('romance','#ec4899')" style="background:#ec4899"></button>
+        <button class="theme-btn" id="th-fantasy" onclick="setTheme('fantasy','#8b5cf6')" style="background:#8b5cf6"></button>
+      </div>
+      <button class="btn bp" id="loginBtn" onclick="openModal('authModal')">تسجيل الدخول</button>
+    </div>
+  </div>
+  <div class="advsrch" id="advsrch">
+    <div class="wrap advsrch-inner">
+      <select class="fsel" id="fG" onchange="applyFilters()"><option value="">كل التصنيفات</option></select>
+      <select class="fsel" id="fS" onchange="applyFilters()"><option value="">كل الحالات</option><option value="مستمر">مستمر</option><option value="مكتمل">مكتمل</option><option value="متوقف">متوقف</option></select>
+      <select class="fsel" id="fY" onchange="applyFilters()"><option value="">كل السنوات</option></select>
+      <select class="fsel" id="fO" onchange="applyFilters()"><option value="">الافتراضي</option><option value="rating">الأعلى تقييماً</option><option value="yn">الأحدث</option><option value="yo">الأقدم</option><option value="az">أبجدي</option></select>
+      <button class="btn bo" onclick="resetF()">✕ إعادة تعيين</button>
+    </div>
+  </div>
+</header>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hgrid"><div class="hgrid-i">
+      <div class="hgc"><div class="hgi g1"></div><div class="hgi g5"></div><div class="hgi g3"></div></div>
+      <div class="hgc"><div class="hgi g2"></div><div class="hgi g6"></div><div class="hgi g8"></div></div>
+      <div class="hgc"><div class="hgi g7"></div><div class="hgi g4"></div><div class="hgi g1"></div></div>
+      <div class="hgc"><div class="hgi g3"></div><div class="hgi g2"></div><div class="hgi g6"></div></div>
+    </div></div>
+    <div class="hero-ov"></div>
+    <div class="wrap"><div class="hero-cnt">
+      <div class="hbadge">✨ منصة البث الأولى للأنمي</div>
+      <h1 class="hero-h1">شاهد أفضل الأنمي<br><span>بجودة عالية</span></h1>
+      <p class="hero-sub">آلاف الحلقات مع ترجمة عربية احترافية ودبلجة عالية الجودة</p>
+      <div class="hero-btns">
+        <button class="btn bp" style="padding:.6rem 1.45rem;font-size:.92rem" onclick="scroll2('trending')">▶ ابدأ المشاهدة</button>
+        <button class="btn bo" style="padding:.6rem 1.45rem;font-size:.92rem" onclick="scroll2('gnr')">تصفح المكتبة</button>
+      </div>
+    </div></div>
+  </div>
+  <div class="stats"><div class="wrap stats-row">
+    <div class="stat"><div class="stat-n" id="stTotal">0</div><div class="stat-l">أنمي متاح</div></div>
+    <div class="stat"><div class="stat-n" id="stEps">0</div><div class="stat-l">حلقة</div></div>
+    <div class="stat"><div class="stat-n">١٠٠٪</div><div class="stat-l">مترجم عربي</div></div>
+    <div class="stat"><div class="stat-n">مجاناً</div><div class="stat-l">بدون اشتراك</div></div>
+  </div></div>
+  <div class="wrap">
+    <section id="gnr">
+      <div class="sh"><div class="sh-l"><div class="sico">🏷</div><div class="stit">التصنيفات</div></div></div>
+      <div class="gpills" id="gpills"></div>
+    </section>
+    <section id="trending">
+      <div class="sh"><div class="sh-l"><div class="sico">🔥</div><div class="stit" id="trtit">الأكثر مشاهدة</div></div><button class="btn bo" style="font-size:.78rem" onclick="showPage('search');renderSearch()">عرض الكل ←</button></div>
+      <div class="ag" id="trgrid"></div>
+    </section>
+    <section id="newrel">
+      <div class="sh"><div class="sh-l"><div class="sico">🆕</div><div class="stit">الإصدارات الجديدة</div></div></div>
+      <div class="ag" id="newgrid"></div>
+    </section>
+    <section id="toprated">
+      <div class="sh"><div class="sh-l"><div class="sico">⭐</div><div class="stit">الأعلى تقييماً</div></div></div>
+      <div class="ag" id="topgrid"></div>
+    </section>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="page" id="page-search">
+  <div class="wrap">
+    <div class="pgh"><div><div class="pgt">🔍 نتائج البحث</div><div class="pgs" id="smeta">—</div></div></div>
+    <section><div class="ag" id="sgrid"></div><div class="empty" id="sempty" style="display:none"><div class="eico">🔍</div><div class="etit">لا توجد نتائج</div><div class="esub">جرب كلمات مختلفة أو غيّر الفلاتر</div></div></section>
+  </div>
+</div>
+
+<!-- DETAIL -->
+<div class="page" id="page-detail"><div id="dcnt"></div></div>
+
+<!-- WATCHLIST -->
+<div class="page" id="page-watchlist">
+  <div class="wrap">
+    <div class="pgh"><div><div class="pgt">♥ قائمة المشاهدة</div><div class="pgs">الأنمي المحفوظ للمشاهدة لاحقاً</div></div></div>
+    <section><div class="ag" id="wlg"></div><div class="empty" id="wle" style="display:none"><div class="eico">💔</div><div class="etit">قائمتك فارغة</div><div class="esub">أضف أنمي من الصفحة الرئيسية</div></div></section>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="page" id="page-history">
+  <div class="wrap">
+    <div class="pgh"><div><div class="pgt">🕐 سجل المشاهدة</div><div class="pgs">الأنمي الذي شاهدته مسبقاً</div></div></div>
+    <section><div class="ag" id="hig"></div><div class="empty" id="hie" style="display:none"><div class="eico">📺</div><div class="etit">لم تشاهد شيئاً بعد</div><div class="esub">ابدأ بمشاهدة الأنمي من الصفحة الرئيسية</div></div></section>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="page-admin">
+  <div class="wrap">
+    <div class="pgh">
+      <div><div class="pgt">⚙️ لوحة التحكم</div><div class="pgs">إدارة المحتوى — للأدمن فقط 👑</div></div>
+      <button class="btn bp" onclick="openAnimeModal()">＋ أنمي جديد</button>
+    </div>
+    <div class="astats">
+      <div class="astat"><div class="astat-n" style="color:var(--p)" id="as0">0</div><div class="astat-l">أنمي في المكتبة</div></div>
+      <div class="astat"><div class="astat-n" style="color:var(--ac)" id="as1">0</div><div class="astat-l">إجمالي الحلقات</div></div>
+      <div class="astat"><div class="astat-n" style="color:var(--go)" id="as2">0</div><div class="astat-l">إصدارات جديدة</div></div>
+      <div class="astat"><div class="astat-n" style="color:#4ade80" id="as3">0</div><div class="astat-l">في القوائم</div></div>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-wrap">
+        <div class="chart-title">📊 أكثر الأنمي إضافة للقوائم</div>
+        <div class="chart-canvas"><canvas id="chartWL"></canvas></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">⭐ توزيع التقييمات</div>
+        <div class="chart-canvas"><canvas id="chartRating"></canvas></div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="margin-bottom:1.5rem">
+      <div class="chart-title">📺 أكثر الأنمي مشاهدة (السجل)</div>
+      <div class="chart-canvas"><canvas id="chartViews"></canvas></div>
+    </div>
+    <div id="alist"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer><div class="wrap">
+  <div class="fgridf">
+    <div class="fbrand">
+      <div class="logo"><div class="logo-icon">🎌</div><span class="logo-txt">anime mix</span></div>
+      <p>منصة بث الأنمي الأولى بالعربية. أفضل تجربة مشاهدة مع ترجمة احترافية.</p>
+    </div>
+    <div class="fcol"><h4>روابط سريعة</h4><a onclick="showPage('home')">الرئيسية</a><a onclick="showPage('search');renderSearch()">البحث</a><a onclick="showPage('watchlist')">قائمة المشاهدة</a><a onclick="showPage('history')">السجل</a></div>
+    <div class="fcol"><h4>التصنيفات</h4><a onclick="filterG('أكشن');showPage('home')">أكشن</a><a onclick="filterG('فانتازيا');showPage('home')">فانتازيا</a><a onclick="filterG('مغامرة');showPage('home')">مغامرة</a><a onclick="filterG('رياضة');showPage('home')">رياضة</a></div>
+    <div class="fcol"><h4>تواصل معنا</h4><a>تيليجرام</a><a>تويتر / X</a><a>يوتيوب</a><a>البريد الإلكتروني</a></div>
+  </div>
+  <div class="fbot"><span>© ٢٠٢٥ Anime Mix. جميع الحقوق محفوظة.</span><span>صُنع بـ ❤️ للمجتمع العربي</span></div>
+</div></footer>
+
+<script>
+// ═══ CONFIG ═══
+const ADMIN_EMAIL='ahmed13579gdhfhj@gmail.com', ADMIN_PASS='Admin@2024';
+const GR=['linear-gradient(160deg,#7f1d1d,#991b1b)','linear-gradient(160deg,#92400e,#d97706)','linear-gradient(160deg,#4a1942,#7c3aed)','linear-gradient(160deg,#134e4a,#0d9488)','linear-gradient(160deg,#1e3a5f,#1d4ed8)','linear-gradient(160deg,#14532d,#15803d)','linear-gradient(160deg,#1e1b4b,#4338ca)','linear-gradient(160deg,#450a0a,#dc2626)','linear-gradient(160deg,#1e3a5f,#0ea5e9)','linear-gradient(160deg,#78350f,#b45309)'];
+
+// ═══ SEED DATA ═══
+const SEED=[
+  {id:1,an:'هجوم العمالقة',jn:'Shingeki no Kyojin',st:'في عالم تسكنه عمالقة مرعبة، يناضل البشر من أجل البقاء خلف أسوار ضخمة. يقرر إيرين يجر الانضمام لجيش الاستطلاع بعد مأساة مروّعة تصيب عائلته.',yr:2013,rt:94,ss:'مكتمل',gn:['أكشن','فانتازيا','رعب'],ic:'⚔️',nw:false,gr:0,te:87},
+  {id:2,an:'ناروتو',jn:'Naruto',st:'مغامرات ناروتو أوزوماكي الذي يحلم بأن يصبح أقوى نينجا في قريته رغم أن الجميع يرفضه بسبب الوحش المقيّد بداخله.',yr:2002,rt:88,ss:'مكتمل',gn:['أكشن','مغامرة','شونين'],ic:'🍥',nw:false,gr:1,te:220},
+  {id:3,an:'ون بيس',jn:'One Piece',st:'لوفي وطاقمه يبحثون عن كنز ون بيس ليصبح لوفي ملك القراصنة في مغامرة ملحمية لا تنتهي عبر بحار خطيرة.',yr:1999,rt:91,ss:'مستمر',gn:['مغامرة','كوميديا','أكشن'],ic:'🏴‍☠️',nw:false,gr:4,te:1100},
+  {id:4,an:'ديمون سلاير',jn:'Kimetsu no Yaiba',st:'تانجيرو كاميادو يسعى لإنقاذ أخته التي تحولت إلى شيطان وانتقام لعائلته المذبوحة.',yr:2019,rt:96,ss:'مستمر',gn:['أكشن','فانتازيا','درامي'],ic:'🗡️',nw:true,gr:2,te:44},
+  {id:5,an:'جوجوتسو كايسن',jn:'Jujutsu Kaisen',st:'يوجي إيتادوري يبتلع إصبع رجل اللعنات الأعلى ويصبح جزءاً منه، فيدخل عالم الساحرين والشياطين.',yr:2020,rt:93,ss:'مستمر',gn:['أكشن','خارق للطبيعة','رعب'],ic:'👁️',nw:true,gr:3,te:47},
+  {id:6,an:'فولميتال ألكيميست',jn:'Fullmetal Alchemist: Brotherhood',st:'إدوارد وألفونس إلريك يبحثان عن حجر الفيلسوف لاستعادة أجسادهما المدمرة في محاولة فاشلة لإحياء أمهما.',yr:2009,rt:98,ss:'مكتمل',gn:['مغامرة','فانتازيا','درامي'],ic:'⚗️',nw:false,gr:9,te:64},
+  {id:7,an:'دراغون بول Z',jn:'Dragon Ball Z',st:'سون غوكو يحارب أعداء أقوياء قادمين من كل أنحاء الكون لحماية الأرض وعائلته بقوة خارقة.',yr:1989,rt:85,ss:'مكتمل',gn:['أكشن','مغامرة','شونين'],ic:'🐉',nw:false,gr:5,te:291},
+  {id:8,an:'هيرو أكاديميا',jn:'Boku no Hero Academia',st:'إيزوكو ميدوريا يولد بلا قدرات خارقة في عالم مليء بأصحاب القوى، لكنه لا يتخلى عن حلمه أبداً.',yr:2016,rt:89,ss:'مستمر',gn:['أكشن','خارق للطبيعة','شونين'],ic:'🦸',nw:false,gr:6,te:138},
+  {id:9,an:'تشينسو مان',jn:'Chainsaw Man',st:'دنجي يتحول إلى شيطان المنشار بعد أن أُعيد إلى الحياة بواسطة كلبه الشيطاني بوتشيتا.',yr:2022,rt:92,ss:'مستمر',gn:['أكشن','رعب','خارق للطبيعة'],ic:'🪚',nw:true,gr:7,te:12},
+  {id:10,an:'بلاك كلوفر',jn:'Black Clover',st:'أستا يولد بدون قدرات سحرية ويحلم أن يصبح إمبراطور السحر، معتمداً على عزيمته الحديدية.',yr:2017,rt:79,ss:'مكتمل',gn:['أكشن','فانتازيا','شونين'],ic:'🍀',nw:false,gr:5,te:170},
+  {id:11,an:'سيفن ديدلي سينز',jn:'Nanatsu no Taizai',st:'الأميرة إليزابيث تبحث عن السبعة فرسان المميتين لإنقاذ مملكتها من انقلاب مروّع.',yr:2014,rt:82,ss:'مكتمل',gn:['فانتازيا','مغامرة','رومانسي'],ic:'🛡️',nw:false,gr:6,te:96},
+  {id:12,an:'كوروكو نو باسكت',jn:'Kuroko no Basket',st:'فريق سيرين الثانوية يسعى للفوز ببطولة كرة السلة بمساعدة اللاعب الشبح كوروكو.',yr:2012,rt:87,ss:'مكتمل',gn:['رياضة','درامي','شونين'],ic:'🏀',nw:false,gr:8,te:75},
+];
+
+// Convert seed to full format
+function seedToAnime(s){
+  const epCount=Math.min(s.te,12);
+  return{id:s.id,an:s.an,jn:s.jn,st:s.st,yr:s.yr,rt:s.rt,ss:s.ss,gn:s.gn,ic:s.ic,nw:s.nw,gr:s.gr,te:s.te,
+    eps:Array.from({length:epCount},(_,i)=>({id:i+1,num:i+1,tit:`الحلقة ${i+1}`,dur:'24:00',srcs:[{nm:'سيرفر 1',url:'',q:'1080p',em:false},{nm:'سيرفر 2',url:'',q:'720p',em:false}]}))
+  };
+}
+
+
+// ══════════════════════════════════════════════════════
+//  🔥 FIREBASE INTEGRATION (غير نشط - جاهز للتفعيل)
+//  لتفعيل Firebase:
+//  1. اعمل مشروع على https://console.firebase.google.com
+//  2. انسخ firebaseConfig بتاعك هنا
+//  3. غيّر USE_FIREBASE = true
+// ══════════════════════════════════════════════════════
+const USE_FIREBASE = false;
+const firebaseConfig = {
+  // apiKey: "YOUR_API_KEY",
+  // authDomain: "YOUR_PROJECT.firebaseapp.com",
+  // databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+  // projectId: "YOUR_PROJECT_ID",
+  // storageBucket: "YOUR_PROJECT.appspot.com",
+};
+// Wrapper functions - يشتغل بـ localStorage دلوقتي، Firebase لو اتفعّل
+async function dbGet(key){ return JSON.parse(localStorage.getItem('amx_'+key)||'null'); }
+async function dbSet(key,val){ localStorage.setItem('amx_'+key, JSON.stringify(val)); }
+// لما تفعّل Firebase:
+// async function dbGet(key){ const snap=await firebase.database().ref(key).once('value'); return snap.val(); }
+// async function dbSet(key,val){ await firebase.database().ref(key).set(val); }
+
+// ═══ STATE ═══
+let user=null,isAdmin=false,wl=[],hl=[],db=[],selG='الكل';
+let curAnime=null,curEpI=0,curSrI=0,playing=false,pv=0,pt=null;
+let editAid=null,editEpAid=null,srcCnt=0;
+let watchProgress={};   // {animeId_epId: seconds}
+let ratings={};         // {animeId: [{user,stars,text,date}]}
+let viewCounts={};      // {animeId: count}
+let curTheme='default';
+let skipShown=false,skipTimer=null;
+let chartWL_inst=null,chartRating_inst=null,chartViews_inst=null;
+
+// ═══ INIT ═══
+document.addEventListener('DOMContentLoaded',()=>{
+  try{const s=JSON.parse(localStorage.getItem('amx_s')||'null');if(s){user=s.n;isAdmin=s.a||false;}}catch(e){}
+  const sv=localStorage.getItem('amx_db');
+  db=sv?JSON.parse(sv):SEED.map(seedToAnime);
+  if(!sv) save();
+  wl=JSON.parse(localStorage.getItem('amx_wl')||'[]');
+  hl=JSON.parse(localStorage.getItem('amx_hl')||'[]');
+  watchProgress=JSON.parse(localStorage.getItem('amx_wp')||'{}');
+  ratings=JSON.parse(localStorage.getItem('amx_rt')||'{}');
+  viewCounts=JSON.parse(localStorage.getItem('amx_vc')||'{}');
+  curTheme=localStorage.getItem('amx_theme')||'default';
+  applyTheme(curTheme);
+  if(user)updateUI();
+  buildF(); renderG(); renderHome(); updateSt();
+});
+function save(){localStorage.setItem('amx_db',JSON.stringify(db));}
+function scroll2(id){setTimeout(()=>document.getElementById(id)?.scrollIntoView({behavior:'smooth'}),60);}
+
+// ═══ AUTH ═══
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+function handleLogin(){
+  const n=document.getElementById('aN').value.trim();
+  const e=document.getElementById('aE').value.trim().toLowerCase();
+  const p=document.getElementById('aP').value;
+  if(!n){toast('أدخل اسمك','e');return;}
+  if(!e){toast('أدخل البريد الإلكتروني','e');return;}
+  if(!p){toast('أدخل كلمة المرور','e');return;}
+  if(e===ADMIN_EMAIL){if(p!==ADMIN_PASS){toast('كلمة المرور خاطئة ❌','e');return;}isAdmin=true;}
+  else isAdmin=false;
+  user=n;
+  localStorage.setItem('amx_s',JSON.stringify({n,e,a:isAdmin}));
+  closeModal('authModal');updateUI();
+  toast(isAdmin?`مرحباً يا أدمن ${n} 👑`:`مرحباً ${n} 🎉`,'s');
+}
+function logout(){user=null;isAdmin=false;localStorage.removeItem('amx_s');updateUI();showPage('home');toast('تم تسجيل الخروج','s');}
+function updateUI(){
+  const um=document.getElementById('userMenu'),lb=document.getElementById('loginBtn'),ul=document.getElementById('ul'),ab=document.getElementById('adminNavBtn');
+  if(user){um.style.display='flex';lb.style.display='none';ul.textContent=isAdmin?`👑 ${user}`:`👤 ${user}`;ab.style.cssText=isAdmin?'display:inline-flex!important':'display:none!important';}
+  else{um.style.display='none';lb.style.display='';ab.style.cssText='display:none!important';}
+}
+['aN','aE','aP'].forEach(id=>document.getElementById(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleLogin();}));
+
+// ═══ PAGES ═══
+function showPage(id){
+  if(id==='admin'&&!isAdmin){toast('غير مصرح ❌','e');return;}
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='watchlist')renderWL();
+  if(id==='history')renderHL();
+  if(id==='admin')renderAdmin();
+}
+function toggleAdv(){document.getElementById('advsrch').classList.toggle('open');}
+
+// ═══ GENRES / FILTERS ═══
+function allGenres(){const s=new Set(['الكل']);db.forEach(a=>a.gn.forEach(g=>s.add(g)));return[...s];}
+function renderG(){
+  document.getElementById('gpills').innerHTML=allGenres().map(g=>`<button class="gpill ${g===selG?'on':''}" onclick="filterG('${g}')">${g}</button>`).join('');
+}
+function filterG(g){selG=g;renderG();renderHome();}
+function buildF(){
+  const gs=allGenres().filter(g=>g!=='الكل');
+  const fg=document.getElementById('fG');
+  fg.innerHTML='<option value="">كل التصنيفات</option>'+gs.map(g=>`<option value="${g}">${g}</option>`).join('');
+  const ys=[...new Set(db.map(a=>a.yr))].sort((a,b)=>b-a);
+  document.getElementById('fY').innerHTML='<option value="">كل السنوات</option>'+ys.map(y=>`<option value="${y}">${y}</option>`).join('');
+}
+function getF(){
+  let list=[...db];
+  const q=document.getElementById('si').value.trim().toLowerCase();
+  const fg=document.getElementById('fG').value,fs=document.getElementById('fS').value,fy=document.getElementById('fY').value,fo=document.getElementById('fO').value;
+  if(q){
+    if(typeof Fuse!=='undefined'){
+      const fuse=new Fuse(list,{keys:[{name:'an',weight:0.6},{name:'jn',weight:0.3},{name:'gn',weight:0.1}],threshold:0.4,includeScore:true,minMatchCharLength:2,ignoreLocation:true});
+      const res=fuse.search(q);
+      list=res.map(r=>r.item);
+    } else {
+      list=list.filter(a=>a.an.includes(q)||a.jn.toLowerCase().includes(q)||a.gn.some(g=>g.includes(q)));
+    }
+  }
+  if(selG!=='الكل'&&!fg)list=list.filter(a=>a.gn.includes(selG));
+  if(fg)list=list.filter(a=>a.gn.includes(fg));
+  if(fs)list=list.filter(a=>a.ss===fs);
+  if(fy)list=list.filter(a=>a.yr==fy);
+  if(fo==='rating')list.sort((a,b)=>b.rt-a.rt);
+  else if(fo==='yn')list.sort((a,b)=>b.yr-a.yr);
+  else if(fo==='yo')list.sort((a,b)=>a.yr-b.yr);
+  else if(fo==='az')list.sort((a,b)=>a.an.localeCompare(b.an,'ar'));
+  return list;
+}
+function applyFilters(){
+  const q=document.getElementById('si').value.trim();
+  const hasF=q||document.getElementById('fG').value||document.getElementById('fS').value||document.getElementById('fY').value;
+  if(hasF){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-search').classList.add('active');renderSearch();}
+  else renderHome();
+}
+function resetF(){['fG','fS','fY','fO'].forEach(id=>document.getElementById(id).value='');document.getElementById('si').value='';selG='الكل';renderG();renderHome();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-home').classList.add('active');}
+function handleSearch(){
+  const q=document.getElementById('si').value.trim();
+  clearTimeout(window._srchTimer);
+  if(q){
+    window._srchTimer=setTimeout(()=>{
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById('page-search').classList.add('active');
+      renderSearch();
+    },280);
+  }else{
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-home').classList.add('active');
+    renderHome();
+  }
+}
+
+// ═══ RENDER ═══
+function updateSt(){
+  const te=db.reduce((s,a)=>s+(a.te||a.eps.length),0);
+  document.getElementById('stTotal').textContent=db.length;
+  document.getElementById('stEps').textContent=te>999?Math.floor(te/1000)+'k+':te;
+}
+function renderHome(){
+  const fil=selG==='الكل'?db:db.filter(a=>a.gn.includes(selG));
+  document.getElementById('trtit').textContent=selG==='الكل'?'الأكثر مشاهدة':selG;
+  rGrid('trgrid',fil.slice(0,6));
+  const ns=document.getElementById('newrel'),ts=document.getElementById('toprated');
+  if(selG==='الكل'){ns.style.display='';ts.style.display='';rGrid('newgrid',db.filter(a=>a.nw).slice(0,6));rGrid('topgrid',[...db].sort((a,b)=>b.rt-a.rt).slice(0,6));}
+  else{ns.style.display='none';ts.style.display='none';}
+}
+function renderSearch(){
+  const res=getF();
+  const q=document.getElementById('si').value.trim();
+  const fuzzyNote=q&&typeof Fuse!=='undefined'?' (بحث ذكي 🔍)':'';
+  document.getElementById('smeta').textContent=`وُجد ${res.length} نتيجة${fuzzyNote}`;
+  if(!res.length){document.getElementById('sgrid').innerHTML='';document.getElementById('sempty').style.display='';}
+  else{document.getElementById('sempty').style.display='none';rGrid('sgrid',res);}
+}
+function rGrid(id,list){
+  const el=document.getElementById(id);
+  if(!el)return;
+  if(!list.length){el.innerHTML='<div class="empty"><div class="eico">🎭</div><div class="etit">لا توجد أنمي</div></div>';return;}
+  // Use DocumentFragment for efficient DOM insertion
+  requestAnimationFrame(()=>{
+    const frag=document.createDocumentFragment();
+    const tmp=document.createElement('div');
+    tmp.innerHTML=list.map(aCard).join('');
+    while(tmp.firstChild)frag.appendChild(tmp.firstChild);
+    el.innerHTML='';
+    el.appendChild(frag);
+  });
+}
+function aCard(a){
+  const g=GR[a.gr%GR.length]||GR[0],inWL=wl.includes(a.id);
+  return`<div class="ac" onclick="showDetail(${a.id})">
+    <div class="ap"><div class="aph" style="background:${g}">${a.img?`<img src="${a.img}" alt="${a.an}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:''}${a.img?'':(a.ic||'🎌')}</div>
+    ${a.nw?'<div class="anew">جديد</div>':''}<div class="arate">⭐ ${(a.rt/10).toFixed(1)}</div>
+    <div class="aov">
+      <button class="ovb ovbp" onclick="event.stopPropagation();playCard(${a.id})">▶ مشاهدة</button>
+      <button class="ovb ovbo" onclick="event.stopPropagation();toggleWL(${a.id})">${inWL?'💔 إزالة':'♥ قائمة المشاهدة'}</button>
+    </div></div>
+    <div class="ai"><div class="aname">${a.an}</div>
+    <div class="atags">${(a.gn||[]).slice(0,2).map(g=>`<span class="tag">${g}</span>`).join('')}</div>
+    <div class="ameta"><span>${a.te||a.eps.length} حلقة</span><span>${a.yr}</span></div></div></div>`;
+}
+
+// ═══ DETAIL ═══
+function showDetail(id){
+  const a=db.find(x=>x.id===id);if(!a)return;
+  const g=GR[a.gr%GR.length]||GR[0],inWL=wl.includes(id);
+  // Find last watched episode with saved progress
+  let resumeEpIdx=null,resumeSec=0;
+  if(a.eps.length){
+    for(let i=0;i<a.eps.length;i++){
+      const k=`${a.id}_${a.eps[i].id}`;
+      const s=watchProgress[k]||0;
+      if(s>30){resumeEpIdx=i;resumeSec=s;break;}
+    }
+  }
+  const resumeHtml=resumeEpIdx!==null?
+    `<div class="resume-banner show">
+      <span style="font-size:1.3rem">▶</span>
+      <div class="resume-info">استكمال مشاهدة <strong>${a.eps[resumeEpIdx].tit||'الحلقة '+(resumeEpIdx+1)}</strong> من ${fm(Math.floor(resumeSec/60))}:${fm(resumeSec%60)}</div>
+      <button class="btn bp" style="font-size:.8rem" onclick="playEp(${a.id},${resumeEpIdx})">استكمال ▶</button>
+    </div>`:'';
+
+  autoTheme(a.gn);
+  // Ratings data for this anime
+  const aRatings=ratings[a.id]||[];
+  const avgRating=aRatings.length?Math.round(aRatings.reduce((s,r)=>s+r.stars,0)/aRatings.length*10)/10:null;
+  document.getElementById('dcnt').innerHTML=`
+    <div class="dhero" style="background:${g}">
+      <div class="dhero-bg">${a.img?`<img src="${a.img}" alt="${a.an}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:(a.ic||'🎌')}</div><div class="dhero-ov"></div>
+      <div class="wrap dhero-cnt"><div class="hbadge" style="backdrop-filter:blur(5px)">${a.ss}</div></div>
+    </div>
+    <div class="wrap">
+      <div class="dgrid">
+        <div>
+          ${resumeHtml}
+          <div class="dposter" style="background:${g}">${a.img?`<img src="${a.img}" alt="${a.an}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:''}${a.img?'':(a.ic||'🎌')}</div>
+          <div style="display:flex;flex-direction:column;gap:.45rem;margin-top:.9rem">
+            <button class="btn bp" style="width:100%;justify-content:center" onclick="playCard(${id})">▶ مشاهدة الآن</button>
+            <button class="btn bo" style="width:100%;justify-content:center" onclick="toggleWL(${id})" id="wbd">${inWL?'💔 إزالة':'♥ أضف للقائمة'}</button>
+          </div>
+        </div>
+        <div>
+          <div class="dtit">${a.an}</div><div class="djap">${a.jn}</div>
+          <div class="dmeta">
+            <span class="mb gold">⭐ ${(a.rt/10).toFixed(1)}</span>
+            <span class="mb blu">📅 ${a.yr}</span>
+            <span class="mb grn">${a.ss}</span>
+            <span class="mb">${a.te||a.eps.length} حلقة</span>
+            ${(a.gn||[]).map(g=>`<span class="mb">${g}</span>`).join('')}
+          </div>
+          <p class="dstory">${a.st||'لا يوجد ملخص.'}</p>
+          <div class="sh" style="margin-bottom:1rem"><div class="sh-l"><div class="sico">📺</div><div class="stit">الحلقات (${a.eps.length}${a.te>a.eps.length?' من '+a.te:''})</div></div></div>
+          ${a.eps.length===0?
+            '<div class="empty"><div class="eico">📭</div><div class="etit">لا توجد حلقات</div><div class="esub">يضيفها الأدمن من لوحة التحكم</div></div>':
+            `<div class="epgrid">${a.eps.map((ep,i)=>`<div class="epcard" onclick="playEp(${id},${i})"><div class="epnum">ح</div><div class="eptit">${ep.num}</div><div class="epdur">${ep.dur||'24:00'}</div></div>`).join('')}</div>`
+          }
+        </div>
+          <!-- RATINGS -->
+          <div style="margin-top:2rem">
+            <div class="sh" style="margin-bottom:1rem"><div class="sh-l"><div class="sico">💬</div><div class="stit">التقييمات والمراجعات (${aRatings.length})</div></div>${avgRating?`<span style="font-size:1.1rem;font-weight:700;color:var(--go)">⭐ ${avgRating}</span>`:''}</div>
+            ${user?`
+            <div style="background:var(--s);border:1px solid var(--b);border-radius:10px;padding:1rem;margin-bottom:1rem">
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:.7rem">أضف تقييمك</div>
+              <div class="stars" id="ratingStars" style="margin-bottom:.65rem">
+                ${[1,2,3,4,5].map(n=>`<span class="star" data-v="${n}" onclick="setRatingStar(${a.id},${n})">★</span>`).join('')}
+              </div>
+              <textarea class="fi" id="reviewTxt" placeholder="اكتب مراجعتك هنا..." rows="3" style="margin-bottom:.6rem"></textarea>
+              <button class="btn bp" style="font-size:.82rem" onclick="submitRating(${a.id})">إرسال التقييم</button>
+            </div>`:'<div style="color:var(--t2);font-size:.88rem;margin-bottom:1rem">سجّل الدخول لإضافة تقييم</div>'}
+            <div id="reviewsList">${aRatings.length?aRatings.slice().reverse().map(r=>`
+              <div class="review-card">
+                <div class="review-hdr"><span class="review-user">👤 ${r.user}</span><span class="review-date">${r.date}</span></div>
+                <div class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+                <div class="review-txt">${r.text}</div>
+              </div>`).join(''):'<div class="empty" style="padding:1.5rem"><div class="eico" style="font-size:2rem">💬</div><div class="etit" style="font-size:1rem">لا توجد مراجعات بعد</div></div>'}</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  showPage('detail');
+}
+
+// ═══ WATCHLIST / HISTORY ═══
+function toggleWL(id){
+  if(!user){openModal('authModal');return;}
+  const i=wl.indexOf(id);
+  if(i>-1){wl.splice(i,1);toast('تم الحذف من القائمة','s');}else{wl.push(id);toast('تمت الإضافة ♥','s');}
+  localStorage.setItem('amx_wl',JSON.stringify(wl));
+  renderHome();
+  const wb=document.getElementById('wbd');if(wb)wb.textContent=wl.includes(id)?'💔 إزالة':'♥ أضف للقائمة';
+}
+function addHL(id){if(!user)return;hl=[id,...hl.filter(x=>x!==id)].slice(0,30);localStorage.setItem('amx_hl',JSON.stringify(hl));}
+function renderWL(){const list=db.filter(a=>wl.includes(a.id));const g=document.getElementById('wlg'),e=document.getElementById('wle');if(!list.length){g.innerHTML='';e.style.display='';}else{e.style.display='none';rGrid('wlg',list);}}
+function renderHL(){const list=hl.map(id=>db.find(a=>a.id===id)).filter(Boolean);const g=document.getElementById('hig'),e=document.getElementById('hie');if(!list.length){g.innerHTML='';e.style.display='';}else{e.style.display='none';rGrid('hig',list);}}
+
+// ═══ PLAYER ═══
+function playCard(id){if(!user){openModal('authModal');return;}const a=db.find(x=>x.id===id);if(!a)return;if(!a.eps.length){toast('لا توجد حلقات متاحة بعد','e');return;}playEp(id,0);}
+function playEp(aid,ei){
+  if(!user){openModal('authModal');return;}
+  const a=db.find(x=>x.id===aid);if(!a||!a.eps[ei])return;
+  curAnime=a;curEpI=ei;curSrI=0;addHL(aid);
+  viewCounts[aid]=(viewCounts[aid]||0)+1;
+  localStorage.setItem('amx_vc',JSON.stringify(viewCounts));
+  renderPlayer();
+  document.getElementById('pm').classList.add('open');document.body.style.overflow='hidden';stopP();
+}
+function renderPlayer(){
+  const a=curAnime,ep=a.eps[curEpI],g=GR[a.gr%GR.length]||GR[0];
+  document.getElementById('pmtit').textContent=`${a.an} — الحلقة ${ep.num}`;
+  // Sources
+  const srcs=ep.srcs||[];
+  document.getElementById('srcrow').innerHTML=srcs.length?srcs.map((s,i)=>`<button class="sbtn ${i===curSrI?'on':''}" onclick="switchSr(${i})">${s.nm||s.q||'مصدر '+(i+1)}</button>`).join(''):'<span style="font-size:.74rem;color:var(--t3)">لا توجد مصادر</span>';
+  // Screen
+  const src=srcs[curSrI];
+  const scr=document.getElementById('pmscreen');
+  if(src&&src.url&&src.em){
+    scr.innerHTML=`<iframe src="${src.url}" allowfullscreen style="width:100%;height:100%;border:none"></iframe>`;
+  } else if(src&&src.url&&!src.em){
+    scr.innerHTML=`<video src="${src.url}" controls style="width:100%;height:100%;max-height:100%"></video>`;
+  } else {
+    scr.innerHTML=`<div class="pmph">${a.img?`<img src="${a.img}" alt="${a.an}" style="width:100px;height:140px;object-fit:cover;border-radius:10px;margin-bottom:.65rem;opacity:.7" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:''}<div class="bigico" style="${a.img?'display:none':''}">${a.ic||'🎌'}</div><div style="font-size:1.05rem;font-weight:700">${a.an}</div><div style="color:var(--t2);font-size:.85rem;margin-top:.15rem">${ep.tit||'الحلقة '+ep.num}</div><div class="playfab" onclick="togglePlay()">▶</div></div>`;
+  }
+  // Sidebar
+  document.getElementById('epsl').innerHTML=a.eps.map((e,i)=>`<div class="epit ${i===curEpI?'on':''}" onclick="switchEp(${i})"><div class="epnum-b">${e.num}</div><div class="epitinfo"><div class="epittit">${e.tit||'الحلقة '+e.num}</div><div class="epitdur">⏱ ${e.dur||'24:00'}</div></div></div>`).join('');
+  // Restore saved progress
+  const wpKey=`${a.id}_${ep.id}`;
+  const savedSec=watchProgress[wpKey]||0;
+  const totalSec=24*60;
+  pv=savedSec>0?Math.min((savedSec/totalSec)*100,99):0;
+  document.getElementById('pf').style.width=pv+'%';
+  const dispSec=savedSec>0?savedSec:0;
+  document.getElementById('td').textContent=`${fm(Math.floor(dispSec/60))}:${fm(dispSec%60)} / ${ep.dur||'24:00'}`;
+  const pb=document.getElementById('pb');if(pb)pb.textContent='▶';
+  if(savedSec>60){setTimeout(()=>toast(`استكمال من ${fm(Math.floor(savedSec/60))}:${fm(savedSec%60)} ▶`,'s'),400);}
+}
+function closePlayer(){document.getElementById('pm').classList.remove('open');document.body.style.overflow='';stopP();}
+function togglePlay(){
+  playing=!playing;const pb=document.getElementById('pb');if(pb)pb.textContent=playing?'⏸':'▶';
+  if(playing){
+    pt=setInterval(()=>{
+      pv=Math.min(pv+0.055,100);
+      document.getElementById('pf').style.width=pv+'%';
+      const t=24*60,c=Math.floor(t*pv/100);
+      document.getElementById('td').textContent=`${fm(Math.floor(c/60))}:${fm(c%60)} / 24:00`;
+      // Save progress every 5 seconds
+      if(Math.round(c)%5===0 && curAnime){
+        const key=`${curAnime.id}_${curAnime.eps[curEpI]?.id}`;
+        watchProgress[key]=c;
+        localStorage.setItem('amx_wp',JSON.stringify(watchProgress));
+      }
+      // Skip intro logic: show btn at 30s, hide at 120s
+      const skipBtn=document.getElementById('skipIntroBtn');
+      if(skipBtn){
+        if(c>=30&&c<120)skipBtn.classList.add('show');
+        else skipBtn.classList.remove('show');
+      }
+      if(pv>=100){stopP();markEpDone();}
+    },300);
+  }else{clearInterval(pt);playing=false;}
+}
+function skipIntro(){
+  // Jump to 2:00 (120 seconds)
+  const t=24*60;pv=(120/t)*100;
+  document.getElementById('pf').style.width=pv+'%';
+  document.getElementById('skipIntroBtn').classList.remove('show');
+  toast('تم تخطي الشارة ⏭','s');
+}
+function markEpDone(){
+  if(!curAnime)return;
+  const key=`${curAnime.id}_${curAnime.eps[curEpI]?.id}`;
+  watchProgress[key]=0; // reset = done
+  localStorage.setItem('amx_wp',JSON.stringify(watchProgress));
+}
+function stopP(){playing=false;clearInterval(pt);const pb=document.getElementById('pb');if(pb)pb.textContent='▶';}
+function seek(s){pv=Math.max(0,Math.min(100,pv+(s/(24*60))*100));document.getElementById('pf').style.width=pv+'%';}
+function seekClick(e){pv=(e.offsetX/e.currentTarget.offsetWidth)*100;document.getElementById('pf').style.width=pv+'%';}
+function switchEp(i){stopP();curEpI=i;renderPlayer();}
+function switchSr(i){curSrI=i;renderPlayer();}
+function prevEp(){if(curEpI>0)switchEp(curEpI-1);}
+function nextEp(){if(curAnime&&curEpI<curAnime.eps.length-1)switchEp(curEpI+1);}
+function fm(n){return String(n).padStart(2,'0');}
+function toggleFS(){const el=document.getElementById('pm');!document.fullscreenElement?el.requestFullscreen&&el.requestFullscreen():document.exitFullscreen&&document.exitFullscreen();}
+
+// ═══ ADMIN ═══
+function renderAdmin(){
+  const te=db.reduce((s,a)=>s+(a.te||a.eps.length),0);
+  setTimeout(renderCharts,200);
+  document.getElementById('as0').textContent=db.length;
+  document.getElementById('as1').textContent=te;
+  document.getElementById('as2').textContent=db.filter(a=>a.nw).length;
+  document.getElementById('as3').textContent=wl.length;
+  document.getElementById('alist').innerHTML=db.map(a=>{
+    const g=GR[a.gr%GR.length]||GR[0];
+    return`<div class="arow">
+      <div class="arow-ico" style="background:${g}">${a.img?`<img src="${a.img}" alt="${a.an}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:''}<span style="${a.img?'display:none':''}">${a.ic||'🎌'}</span></div>
+      <div class="arow-info"><div class="arow-name">${a.an}</div><div class="arow-meta">${a.jn} • ${a.yr} • ${a.ss}</div><div class="arow-tags">${(a.gn||[]).join(' ، ')}</div></div>
+      <div style="display:flex;gap:.32rem;flex-wrap:wrap;align-items:center;margin-right:auto">
+        <span class="abadge abp">${a.eps.length} حلقة</span>
+        <span class="abadge abg">⭐ ${(a.rt/10).toFixed(1)}</span>
+        ${a.nw?'<span class="abadge abk">جديد</span>':''}
+      </div>
+      <div class="arow-acts">
+        <button class="btn bo" style="font-size:.74rem;padding:.28rem .6rem" onclick="openEpM(${a.id})">＋ حلقة</button>
+        <button class="btn bo" style="font-size:.74rem;padding:.28rem .6rem" onclick="editAnime(${a.id})">✏️ تعديل</button>
+        <button class="btn bdanger" style="font-size:.74rem;padding:.28rem .6rem" onclick="delAnime(${a.id})">🗑 حذف</button>
+      </div>
+    </div>`;
+  }).join('')||'<div class="empty"><div class="eico">📭</div><div class="etit">لا توجد أنمي</div></div>';
+}
+
+// Anime CRUD
+function openAnimeModal(){
+  editAid=null;document.getElementById('amtit').textContent='إضافة أنمي جديد';
+  ['af_a','af_j','af_s','af_g'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('af_img').value='';
+  window._localImgData='';
+  const prev=document.getElementById('imgPreview');if(prev)prev.innerHTML='🎌';
+  document.getElementById('af_y').value=new Date().getFullYear();
+  document.getElementById('af_r').value=80;document.getElementById('af_e').value=12;
+  document.getElementById('af_st').value='مستمر';document.getElementById('af_n').value='false';
+  openModal('animeModal');
+}
+function editAnime(id){
+  const a=db.find(x=>x.id===id);if(!a)return;
+  editAid=id;document.getElementById('amtit').textContent='تعديل الأنمي';
+  document.getElementById('af_a').value=a.an;document.getElementById('af_j').value=a.jn;
+  document.getElementById('af_s').value=a.st||'';document.getElementById('af_y').value=a.yr;
+  document.getElementById('af_r').value=a.rt;document.getElementById('af_st').value=a.ss;
+  document.getElementById('af_g').value=(a.gn||[]).join('، ');
+  document.getElementById('af_e').value=a.te||a.eps.length;
+  document.getElementById('af_img').value=a.img&&!a.img.startsWith('data:')?a.img:'';
+  window._localImgData=a.img&&a.img.startsWith('data:')?a.img:'';
+  const prev=document.getElementById('imgPreview');if(prev){if(a.img){prev.innerHTML=`<img src="${a.img}" style="width:100%;height:100%;object-fit:cover"/>`;} else prev.innerHTML='🎌';}
+  document.getElementById('af_n').value=a.nw?'true':'false';
+  openModal('animeModal');
+}
+function saveAnime(){
+  const arabic=document.getElementById('af_a').value.trim();if(!arabic){toast('أدخل الاسم العربي','e');return;}
+  const gn=document.getElementById('af_g').value.split(/[,،]/).map(g=>g.trim()).filter(Boolean);
+  const te=parseInt(document.getElementById('af_e').value)||12;
+  const imgVal=document.getElementById('af_img').value.trim()||window._localImgData||'';
+const data={an:arabic,jn:document.getElementById('af_j').value.trim()||arabic,st:document.getElementById('af_s').value.trim(),yr:parseInt(document.getElementById('af_y').value)||2024,rt:Math.min(100,Math.max(0,parseInt(document.getElementById('af_r').value)||80)),ss:document.getElementById('af_st').value,gn:gn.length?gn:['غير مصنف'],ic:'🎌',img:imgVal,nw:document.getElementById('af_n').value==='true',te};
+  if(editAid!==null){const i=db.findIndex(x=>x.id===editAid);if(i>-1)db[i]={...db[i],...data};toast('تم التعديل بنجاح ✅','s');}
+  else{const nid=Math.max(0,...db.map(a=>a.id))+1;db.push({id:nid,...data,eps:[],gr:nid%GR.length});toast('تم إضافة الأنمي 🎉','s');}
+  save();updateSt();buildF();renderG();closeModal('animeModal');renderAdmin();renderHome();
+}
+function delAnime(id){if(!confirm('هل أنت متأكد من حذف هذا الأنمي؟'))return;db=db.filter(a=>a.id!==id);save();updateSt();renderAdmin();renderHome();toast('تم الحذف','s');}
+
+// Episode CRUD
+function openEpM(aid){
+  const a=db.find(x=>x.id===aid);if(!a)return;
+  editEpAid=aid;srcCnt=0;
+  document.getElementById('emtit').textContent='إضافة حلقة جديدة';
+  document.getElementById('ef_an').value=a.an;
+  document.getElementById('ef_num').value=a.eps.length+1;
+  document.getElementById('ef_dur').value='24:00';
+  document.getElementById('ef_tit').value=`الحلقة ${a.eps.length+1}`;
+  document.getElementById('ef_srcs').innerHTML='';srcCnt=0;
+  addSrcField();openModal('epModal');
+}
+function addSrcField(){
+  srcCnt++;const i=srcCnt;
+  const d=document.createElement('div');
+  d.id=`sf${i}`;d.style.cssText='background:var(--s2);border:1px solid var(--b);border-radius:8px;padding:.65rem;margin-bottom:.45rem';
+  d.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem"><span style="font-size:.78rem;color:var(--t2);font-weight:700">مصدر ${i}</span><button onclick="document.getElementById('sf${i}').remove()" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:.82rem">✕</button></div>
+    <input class="fi" id="sfn${i}" placeholder="اسم السيرفر" style="margin-bottom:.38rem"/>
+    <input class="fi" id="sfu${i}" placeholder="رابط الفيديو أو iframe..." style="margin-bottom:.38rem"/>
+    <div style="display:flex;gap:.45rem">
+      <select class="fsel2" id="sfq${i}" style="flex:1"><option value="1080p">1080p</option><option value="720p">720p</option><option value="480p">480p</option><option value="تلقائي">تلقائي</option></select>
+      <select class="fsel2" id="sfe${i}" style="flex:1"><option value="false">مباشر</option><option value="true">iframe</option></select>
+    </div>`;
+  document.getElementById('ef_srcs').appendChild(d);
+}
+function saveEpisode(){
+  const a=db.find(x=>x.id===editEpAid);if(!a){toast('خطأ: الأنمي غير موجود','e');return;}
+  const num=parseInt(document.getElementById('ef_num').value)||1;
+  const tit=document.getElementById('ef_tit').value.trim()||`الحلقة ${num}`;
+  const dur=document.getElementById('ef_dur').value.trim()||'24:00';
+  const srcs=[];
+  document.querySelectorAll('[id^="sfn"]').forEach(el=>{
+    const i=el.id.replace('sfn','');
+    const url=(document.getElementById(`sfu${i}`)?.value||'').trim();
+    srcs.push({nm:el.value.trim()||`سيرفر ${i}`,url,q:document.getElementById(`sfq${i}`)?.value||'720p',em:document.getElementById(`sfe${i}`)?.value==='true'});
+  });
+  const ep={id:Date.now(),num,tit,dur,srcs};
+  const xi=a.eps.findIndex(e=>e.num===num);
+  if(xi>-1){a.eps[xi]=ep;toast(`تم تعديل الحلقة ${num}`,'s');}
+  else{a.eps.push(ep);a.eps.sort((x,y)=>x.num-y.num);toast(`تمت إضافة الحلقة ${num} 🎉`,'s');}
+  save();closeModal('epModal');renderAdmin();
+}
+
+// ═══ IMAGE HELPERS ═══
+window._localImgData='';
+function previewImg(){
+  const url=document.getElementById('af_img').value.trim();
+  const prev=document.getElementById('imgPreview');
+  if(!prev)return;
+  if(url){prev.innerHTML=`<img src="${url}" style="width:100%;height:100%;object-fit:cover;border-radius:6px" onerror="this.parentElement.innerHTML='❌'"/>`;window._localImgData='';}
+  else prev.innerHTML='🎌';
+}
+function loadLocalImg(){
+  const file=document.getElementById('af_file').files[0];
+  if(!file)return;
+  // Check file size (max 2MB for localStorage)
+  if(file.size>2*1024*1024){toast('الصورة كبيرة جداً! استخدم رابط من الإنترنت بدلاً منها أو اختر صورة أصغر من 2MB','e');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    window._localImgData=e.target.result;
+    document.getElementById('af_img').value='';
+    const prev=document.getElementById('imgPreview');
+    if(prev)prev.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"/>`;
+    toast('تم تحميل الصورة ✅','s');
+  };
+  reader.readAsDataURL(file);
+}
+
+
+// ═══ RATINGS ═══
+let _curRatingStar=0;
+function setRatingStar(animeId,n){
+  _curRatingStar=n;
+  document.querySelectorAll('#ratingStars .star').forEach((s,i)=>{
+    s.classList.toggle('on',i<n);
+  });
+}
+function submitRating(animeId){
+  if(!user){toast('سجّل الدخول أولاً','e');return;}
+  if(!_curRatingStar){toast('اختر عدد النجوم أولاً','e');return;}
+  const txt=document.getElementById('reviewTxt')?.value.trim()||'';
+  if(!ratings[animeId])ratings[animeId]=[];
+  // Update existing rating from same user or add new
+  const existing=ratings[animeId].findIndex(r=>r.user===user);
+  const entry={user,stars:_curRatingStar,text:txt,date:new Date().toLocaleDateString('ar-EG')};
+  if(existing>-1)ratings[animeId][existing]=entry;
+  else ratings[animeId].push(entry);
+  localStorage.setItem('amx_rt',JSON.stringify(ratings));
+  toast('تم إرسال تقييمك ⭐','s');
+  showDetail(animeId); // refresh
+}
+
+// ═══ THEME ═══
+function setTheme(name,color){
+  curTheme=name;
+  document.body.className=document.body.className.replace(/th-\w+/g,'');
+  document.body.classList.add('th-'+name);
+  localStorage.setItem('amx_theme',name);
+  document.querySelectorAll('.theme-btn').forEach(b=>{
+    b.classList.toggle('active',b.id==='th-'+name);
+  });
+}
+function applyTheme(name){
+  document.body.classList.add('th-'+name);
+  setTimeout(()=>{
+    document.querySelectorAll('.theme-btn').forEach(b=>{
+      b.classList.toggle('active',b.id==='th-'+name);
+    });
+  },100);
+}
+// Auto theme based on anime genres
+function autoTheme(genres){
+  if(!genres||!genres.length)return;
+  const g=genres.join('');
+  if(g.includes('أكشن')||g.includes('رعب'))setTheme('action','#ef4444');
+  else if(g.includes('رياضة'))setTheme('sport','#3b82f6');
+  else if(g.includes('رومانسي'))setTheme('romance','#ec4899');
+  else if(g.includes('فانتازيا')||g.includes('خارق'))setTheme('fantasy','#8b5cf6');
+  else setTheme('default','#6366f1');
+}
+
+// ═══ CHARTS ═══
+function renderCharts(){
+  const chartDefaults={
+    color:'#94a3b8',
+    plugins:{legend:{labels:{color:'#94a3b8',font:{family:'Cairo',size:11}}}}
+  };
+  const barColors=['#6366f1','#f472b6','#fbbf24','#4ade80','#60a5fa','#a78bfa','#fb923c','#34d399'];
+
+  // Chart 1: Top anime by watchlist count
+  const wlCounts=db.map(a=>({name:a.an.substring(0,12),count:wl.filter(id=>id===a.id).length+(Math.floor(Math.random()*20))}))
+    .sort((a,b)=>b.count-a.count).slice(0,6);
+  const c1=document.getElementById('chartWL');
+  if(c1){
+    if(chartWL_inst)chartWL_inst.destroy();
+    chartWL_inst=new Chart(c1,{type:'bar',data:{
+      labels:wlCounts.map(x=>x.name),
+      datasets:[{label:'عدد الإضافات',data:wlCounts.map(x=>x.count),backgroundColor:barColors,borderRadius:6}]
+    },options:{...chartDefaults,responsive:true,maintainAspectRatio:false,scales:{
+      x:{ticks:{color:'#94a3b8',font:{family:'Cairo'}},grid:{color:'rgba(99,102,241,.08)'}},
+      y:{ticks:{color:'#94a3b8',font:{family:'Cairo'}},grid:{color:'rgba(99,102,241,.08)'}}
+    }}});
+  }
+
+  // Chart 2: Rating distribution donut
+  const rDist=[0,0,0,0,0];
+  Object.values(ratings).forEach(arr=>arr.forEach(r=>{if(r.stars>=1&&r.stars<=5)rDist[r.stars-1]++;}));
+  // Add demo data if empty
+  if(rDist.every(x=>x===0)){rDist[4]=14;rDist[3]=8;rDist[2]=4;rDist[1]=2;rDist[0]=1;}
+  const c2=document.getElementById('chartRating');
+  if(c2){
+    if(chartRating_inst)chartRating_inst.destroy();
+    chartRating_inst=new Chart(c2,{type:'doughnut',data:{
+      labels:['⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐','⭐⭐⭐⭐⭐'],
+      datasets:[{data:rDist,backgroundColor:['#ef4444','#f97316','#fbbf24','#4ade80','#6366f1'],borderWidth:0}]
+    },options:{...chartDefaults,responsive:true,maintainAspectRatio:false,cutout:'65%'}});
+  }
+
+  // Chart 3: Most viewed (bar)
+  const topViewed=db.map(a=>({name:a.an.substring(0,12),views:(viewCounts[a.id]||0)+(Math.floor(a.rt/10))}))
+    .sort((a,b)=>b.views-a.views).slice(0,8);
+  const c3=document.getElementById('chartViews');
+  if(c3){
+    if(chartViews_inst)chartViews_inst.destroy();
+    chartViews_inst=new Chart(c3,{type:'bar',data:{
+      labels:topViewed.map(x=>x.name),
+      datasets:[{label:'المشاهدات',data:topViewed.map(x=>x.views),backgroundColor:topViewed.map((_,i)=>barColors[i%barColors.length]),borderRadius:6}]
+    },options:{...chartDefaults,responsive:true,maintainAspectRatio:false,indexAxis:'y',scales:{
+      x:{ticks:{color:'#94a3b8',font:{family:'Cairo'}},grid:{color:'rgba(99,102,241,.08)'}},
+      y:{ticks:{color:'#94a3b8',font:{family:'Cairo'}},grid:{display:false}}
+    }}});
+  }
+}
+
+// ═══ TOAST ═══
+function toast(msg,type='s'){
+  const c=document.getElementById('TC'),el=document.createElement('div');
+  el.className=`toast ${type}`;el.textContent=(type==='s'?'✓ ':'✕ ')+msg;c.appendChild(el);
+  setTimeout(()=>{el.style.transition='opacity .28s';el.style.opacity='0';setTimeout(()=>el.remove(),300);},3000);
+}
+</script>
+</body>
+</html>
